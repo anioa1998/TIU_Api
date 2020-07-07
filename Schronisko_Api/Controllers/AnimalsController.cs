@@ -31,12 +31,14 @@ namespace Schronisko_Api.Controllers
 
         #region GET
     
-        [HttpGet, Authorize]
+        [HttpGet]
         [EnableCors("developerska")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<List<GetAllAnimalsDTO>> GetAllAnimals()
         {
             List<Animal> animals = _context.Animals.ToList();
-            GetAllAnimalsDTO temporaryDTOObject = null;
+            GetAllAnimalsDTO temporaryDTOObject;
             List<GetAllAnimalsDTO> resultList = new List<GetAllAnimalsDTO>();
             //Animal to GetAnimalsDTO mapping
             /* Zazwyczaj korzysta się z automappera definiowanego w osobnych klasach, gdzie określa się, które pole/właściwość z klasy

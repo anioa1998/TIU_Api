@@ -25,7 +25,7 @@ namespace Schronisko_Api.Controllers
         }
 
         [HttpPost]
-        [EnableCors("deweloperska")]
+        [EnableCors("developerska")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Login([FromBody] UserDTO user)
@@ -58,7 +58,7 @@ namespace Schronisko_Api.Controllers
                 );
 
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString, Role = findUser.Role });
+                return Ok(new { token = tokenString, role = findUser.Role });
 
 
             }
